@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Comercial · Step Up Business Solutions · CO-013</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       VARIABLES
+    ============================================================ */
+    :root {
+      --navy:       #0B1628;
+      --navy-mid:   #112240;
+      --navy-light: #1A2D4A;
+      --teal:       #2A7A6E;
+      --teal-glow:  #34C6AF;
+      --amber:      #D4A853;
+      --amber-soft: #F5DDA0;
+      --white:      #F0F2F5;
+      --gray:       #8A95A8;
+      --danger:     #E8524A;
+      --card-bg:    rgba(19,34,64,0.65);
+      --border:     rgba(42,122,110,0.20);
+      --border-dim: rgba(255,255,255,0.07);
+      --radius:     10px;
+      --radius-lg:  18px;
+      --font-head:  'Playfair Display', Georgia, serif;
+      --font-body:  'Outfit', system-ui, sans-serif;
+      --font-mono:  'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(42,122,110,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42,122,110,0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section       { padding: 72px 0; }
+    .section-tight { padding: 44px 0; }
+
+    .section-sep { border-top: 1px solid var(--border-dim); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-glow);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--teal-glow);
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 14.5px;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal-glow), transparent);
+      margin: 14px 0 28px;
+      border-radius: 2px;
+    }
+
+    /* Scroll reveal */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-teal {
+      background: var(--teal-glow);
+      color: var(--navy);
+    }
+    .btn-teal:hover {
+      background: #2AB09C;
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(52,198,175,0.25);
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: var(--navy);
+    }
+    .btn-amber:hover {
+      background: #C49340;
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(212,168,83,0.25);
+    }
+
+    .btn-ghost-amber {
+      background: rgba(212,168,83,0.10);
+      color: var(--amber);
+      border: 1px solid rgba(212,168,83,0.32);
+    }
+    .btn-ghost-amber:hover {
+      background: rgba(212,168,83,0.18);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .btn-secondary:hover {
+      border-color: var(--teal-glow);
+      color: var(--teal-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-wa:hover {
+      background: #1CC35C;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       1. TOP BAR
+    ============================================================ */
+    #topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(11,22,40,0.90);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-brand {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      color: var(--teal-glow);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .topbar-status {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .topbar-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    .topbar-ref {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--gray);
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+
+    /* ============================================================
+       1b. URGENCY / COUNTDOWN BAR
+    ============================================================ */
+    #countdown-bar {
+      margin-top: 52px; /* compensates fixed topbar */
+      background: linear-gradient(135deg, rgba(212,168,83,0.10), rgba(42,122,110,0.07));
+      border-bottom: 1px solid rgba(212,168,83,0.22);
+      padding: 14px 24px;
+      text-align: center;
+      transition: background 0.4s;
+    }
+
+    #countdown-bar.expired {
+      background: linear-gradient(135deg, rgba(232,82,74,0.10), rgba(232,82,74,0.05));
+      border-bottom-color: rgba(232,82,74,0.30);
+    }
+
+    .cd-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+
+    .cd-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cd-unit { text-align: center; }
+
+    .cd-num {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 1.55rem;
+      color: var(--white);
+      line-height: 1;
+      min-width: 44px;
+      display: inline-block;
+    }
+
+    .cd-text {
+      font-family: var(--font-mono);
+      font-size: 0.52rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    .cd-sep {
+      font-family: var(--font-mono);
+      font-size: 1.55rem;
+      color: var(--teal-glow);
+      opacity: 0.45;
+      line-height: 1;
+    }
+
+    .cd-expired-msg {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      color: var(--danger);
+    }
+
+    .cd-sub {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 8px;
+    }
+
+    /* ============================================================
+       2. HERO
+    ============================================================ */
+    #hero {
+      padding: 72px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -100px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,122,110,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-classified {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(212,168,83,0.30);
+      display: inline-block;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+    }
+
+    .hero-greeting {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--gray);
+      margin-bottom: 14px;
+    }
+    .hero-greeting strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(30px, 6vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 20px;
+      max-width: 620px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--teal-glow);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================================
+       3. DIAGNOSIS BLOCK
+    ============================================================ */
+    .finding-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .finding-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .finding-card:hover {
+      border-color: var(--border);
+      box-shadow: 0 0 24px rgba(42,122,110,0.12);
+    }
+
+    .finding-num {
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 700;
+      color: rgba(52,198,175,0.10);
+      position: absolute;
+      top: 10px; right: 16px;
+      line-height: 1;
+    }
+
+    .finding-icon { font-size: 22px; margin-bottom: 12px; }
+
+    .finding-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .finding-text {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .finding-consequence {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(212,168,83,0.80);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       4. PRESCRIPTION BLOCK
+    ============================================================ */
+    .rx-card {
+      background: linear-gradient(135deg, rgba(17,34,64,0.95), rgba(26,45,74,0.85));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rx-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal-glow), var(--amber));
+    }
+
+    .rx-plan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(52,198,175,0.10);
+      border: 1px solid rgba(52,198,175,0.24);
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin-bottom: 22px;
+    }
+
+    .rx-plan-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--teal-glow);
+    }
+
+    .rx-title {
+      font-family: var(--font-head);
+      font-size: clamp(20px, 3.5vw, 26px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .rx-body {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.78;
+      max-width: 600px;
+      margin-bottom: 28px;
+    }
+
+    .rx-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rx-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(52,198,175,0.07);
+      border: 1px solid rgba(52,198,175,0.18);
+      border-radius: 6px;
+      padding: 7px 14px;
+      font-size: 13px;
+      color: var(--teal-glow);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       5. VALUE ANCHOR + INVESTMENT
+    ============================================================ */
+    .anchor-table {
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .anchor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-dim);
+      gap: 12px;
+    }
+    .anchor-row:last-child { border-bottom: none; }
+    .anchor-row--total { background: rgba(52,198,175,0.04); }
+
+    .anchor-label {
+      font-size: 13px;
+      color: var(--gray);
+      flex: 1;
+      line-height: 1.5;
+    }
+    .anchor-label strong { color: var(--white); font-weight: 500; }
+
+    .anchor-value {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: var(--gray);
+      text-decoration: line-through;
+      white-space: nowrap;
+    }
+
+    .anchor-value--total {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(240,242,245,0.55);
+    }
+
+    /* Price card */
+    .price-card {
+      background: linear-gradient(135deg, rgba(17,34,64,0.98), rgba(11,22,40,0.98));
+      border: 1px solid rgba(52,198,175,0.28);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(42,122,110,0.12);
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(52,198,175,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .price-badge {
+      display: inline-block;
+      background: rgba(212,168,83,0.13);
+      border: 1px solid rgba(212,168,83,0.34);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 22px;
+    }
+
+    .price-standard {
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .price-main {
+      font-family: var(--font-head);
+      font-size: clamp(54px, 11vw, 84px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .price-currency {
+      font-size: clamp(24px, 4vw, 34px);
+      vertical-align: super;
+      color: var(--teal-glow);
+      margin-right: 2px;
+    }
+
+    .price-label {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    .price-split {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .split-opt {
+      padding: 14px 20px;
+      border: 1px solid var(--border-dim);
+      font-size: 13px;
+      flex: 1;
+    }
+    .split-opt:first-child { border-radius: 8px 0 0 8px; border-right: none; }
+    .split-opt:last-child  { border-radius: 0 8px 8px 0; }
+
+    .split-opt-label {
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 5px;
+    }
+
+    .split-opt-value {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 16px;
+    }
+
+    .price-note {
+      font-size: 12.5px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .price-note strong { color: var(--amber-soft); }
+
+    /* ============================================================
+       6. DELIVERABLES
+    ============================================================ */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .del-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: border-color 0.22s, box-shadow 0.22s;
+    }
+    .del-item:hover {
+      border-color: var(--border);
+      box-shadow: 0 0 20px rgba(42,122,110,0.10);
+    }
+
+    .del-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(52,198,175,0.10);
+      border: 1px solid rgba(52,198,175,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .del-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .del-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       7. VISUAL EXAMPLE
+    ============================================================ */
+    .browser-frame {
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 18px;
+      background: rgba(11,22,40,0.90);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .browser-dots { display: flex; gap: 6px; }
+
+    .browser-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FEBC2E; }
+    .dot-g { background: #28C840; }
+
+    .browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-dim);
+      border-radius: 4px;
+      padding: 5px 12px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--gray);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .browser-preview {
+      min-height: 340px;
+      background: var(--navy-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .browser-preview img {
+      width: 100%; height: auto;
+      display: block;
+    }
+
+    #previewPlaceholder {
+      text-align: center;
+      padding: 48px;
+    }
+
+    .preview-ph-icon { font-size: 44px; opacity: 0.35; margin-bottom: 14px; }
+    .preview-ph-text { font-size: 13px; color: var(--gray); }
+
+    .browser-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      background: rgba(11,22,40,0.70);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .browser-footer-label {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .browser-footer-label strong { color: var(--white); }
+
+    /* ============================================================
+       8. PROCESS STEPS
+    ============================================================ */
+    .steps-row {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 27px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal-glow), var(--amber));
+      opacity: 0.20;
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .step:nth-child(1) .step-num { background: linear-gradient(135deg, var(--teal-glow), var(--teal)); }
+    .step:nth-child(2) .step-num { background: linear-gradient(135deg, #60A5FA, #3B82F6); }
+    .step:nth-child(3) .step-num { background: linear-gradient(135deg, var(--amber), #B8872E); }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       9. PDF BACKUP
+    ============================================================ */
+    .pdf-strip {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      flex-wrap: wrap;
+    }
+
+    .pdf-icon { font-size: 28px; flex-shrink: 0; }
+
+    .pdf-text { flex: 1; }
+    .pdf-text p   { font-size: 13.5px; color: var(--gray); }
+    .pdf-text strong { color: var(--white); }
+
+    /* ============================================================
+       10. FINAL CLOSE
+    ============================================================ */
+    .close-card {
+      background: linear-gradient(135deg, rgba(17,34,64,0.98), rgba(26,45,74,0.90));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 56px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .close-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--teal-glow));
+    }
+
+    .close-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(42,122,110,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .close-pre {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--teal-glow);
+      margin-bottom: 16px;
+    }
+
+    .close-title {
+      font-family: var(--font-head);
+      font-size: clamp(26px, 5.5vw, 42px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.18;
+    }
+
+    .close-question {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+    .close-question strong { color: var(--white); }
+
+    .close-primary {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .close-or {
+      font-size: 12px;
+      color: rgba(138,149,168,0.55);
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .close-secondary {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .close-footnote {
+      margin-top: 32px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.05em;
+      color: rgba(138,149,168,0.40);
+    }
+    .close-footnote a { color: var(--teal-glow); text-decoration: none; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid var(--border-dim);
+      padding: 28px 24px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-brand {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--teal-glow);
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--teal-glow); }
+
+    .footer-note {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: rgba(138,149,168,0.40);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .rx-card, .close-card, .price-card { padding: 28px 20px; }
+      .steps-row { flex-direction: column; gap: 28px; }
+      .steps-row::before { display: none; }
+      .price-split { flex-direction: column; align-items: stretch; }
+      .split-opt { border-radius: 8px !important; border: 1px solid var(--border-dim) !important; margin-bottom: 8px; }
+      .anchor-row { flex-direction: column; align-items: flex-start; }
+      .topbar-right { gap: 10px; }
+      .topbar-ref { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =============================================================
+     1. TOP BAR
+============================================================== -->
+<header id="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">Step Up Business Solutions</div>
+    <div class="topbar-right">
+      <div class="topbar-status">Propuesta activa</div>
+      <div class="topbar-ref">Ref. CO-013</div>
+    </div>
+  </div>
+</header>
+
+<!-- =============================================================
+     1b. URGENCY / COUNTDOWN BAR
+============================================================== -->
+<div id="countdown-bar">
+  <div class="cd-label">Tarifa de lanzamiento · Fase local · Vigencia</div>
+  <div class="cd-timer" id="countdownTimer">
+    <div class="cd-unit">
+      <div class="cd-num" id="cdDays">--</div>
+      <div class="cd-text">días</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cdHours">--</div>
+      <div class="cd-text">horas</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cdMins">--</div>
+      <div class="cd-text">min</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cdSecs">--</div>
+      <div class="cd-text">seg</div>
+    </div>
+  </div>
+  <p class="cd-sub" id="cdDateLabel"></p>
+</div>
+
+<!-- =============================================================
+     2. HERO
+============================================================== -->
+<section id="hero" class="section">
+  <div class="container">
+
+    <div class="hero-classified">Propuesta personalizada · Manizales</div>
+
+    <p class="hero-greeting fade-in">
+      Hola, <strong>Paula Muñoz</strong>
+    </p>
+
+    <h1 class="hero-title fade-in">
+      Su negocio merece más que<br>
+      <em>un perfil de redes sociales.</em>
+    </h1>
+
+    <p class="hero-sub fade-in">
+      Identificamos una oportunidad de mejora en su presencia digital actual.
+      Esta propuesta presenta la solución concreta, el costo real y el proceso para resolverlo
+      en menos de una semana.
+    </p>
+
+    <div class="hero-actions fade-in">
+      <a href="https://stepupprofessionals.github.io/underground/" target="_blank" rel="noopener" class="btn btn-teal">
+        ▶ Ver ejemplo en vivo
+      </a>
+      <a href="https://stepuplanguages.com/wp-content/uploads/2026/04/Cotizacion_Sal_n_de_Belleza_Ipanema_CO-013.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
+        ↓ Descargar propuesta PDF
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================================
+     3. DIAGNOSIS BLOCK
+============================================================== -->
+<section class="section section-sep" id="diagnostico">
+  <div class="container">
+
+    <div class="section-label">Diagnóstico comercial</div>
+    <h2 class="section-title">Lo que encontramos</h2>
+    <div class="divider"></div>
+    <p class="section-sub">
+      Hallazgos visibles desde afuera del negocio. No son suposiciones:
+      son señales que un cliente potencial también puede ver — y que influyen en su decisión de contactar.
+    </p>
+
+    <div class="finding-grid">
+
+      <!-- Hallazgo 1 -->
+      <div class="finding-card fade-in">
+        <div class="finding-num">01</div>
+        <div class="finding-icon">🔗</div>
+        <h3 class="finding-title">Sin punto de llegada propio</h3>
+        <p class="finding-text">
+          El negocio depende de Instagram o Google Maps como única referencia digital.
+          El cliente no llega a ningún espacio diseñado para convencer.
+        </p>
+        <p class="finding-consequence">
+          ⚠ Mayor fricción para convertir el interés en contacto real.
+        </p>
+      </div>
+
+      <!-- Hallazgo 2 -->
+      <div class="finding-card fade-in">
+        <div class="finding-num">02</div>
+        <div class="finding-icon">📞</div>
+        <h3 class="finding-title">Contacto con fricción</h3>
+        <p class="finding-text">
+          No hay una ruta directa y clara para que el cliente potencial escriba, llame
+          o consulte una ubicación. Tiene que buscarlo.
+        </p>
+        <p class="finding-consequence">
+          ⚠ Quien tiene que esforzarse para contactar, generalmente no lo hace.
+        </p>
+      </div>
+
+      <!-- Hallazgo 3 -->
+      <div class="finding-card fade-in">
+        <div class="finding-num">03</div>
+        <div class="finding-icon">🗺️</div>
+        <h3 class="finding-title">Visibilidad local incompleta</h3>
+        <p class="finding-text">
+          Sin un Google Business Profile activo y bien configurado, el negocio pierde
+          presencia en búsquedas locales y no acumula reseñas visibles.
+        </p>
+        <p class="finding-consequence">
+          ⚠ Menor confianza pública y menor alcance orgánico en Manizales.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     4. PRESCRIPTION BLOCK
+============================================================== -->
+<section class="section section-sep" id="recomendacion">
+  <div class="container">
+
+    <div class="section-label">Recomendación</div>
+    <h2 class="section-title">Lo que necesita en esta etapa</h2>
+    <div class="divider"></div>
+
+    <div class="rx-card fade-in">
+      <div class="rx-plan-badge">
+        <span style="color:var(--teal-glow); font-size:15px;">✦</span>
+        <span class="rx-plan-name">Plan Presencia</span>
+      </div>
+
+      <h3 class="rx-title">Una base digital funcional, clara y bien presentada.</h3>
+
+      <p class="rx-body">
+        No se trata de tener "una página más". Se trata de tener un espacio propio que trabaje
+        mientras usted atiende su negocio: que muestre lo que hace, genere confianza,
+        facilite el contacto directo y posicione el nombre en búsquedas locales.
+        El <strong style="color:var(--white);">Plan Presencia</strong> resuelve eso de forma concreta,
+        en un plazo corto y con una inversión accesible.
+      </p>
+
+      <div class="rx-chips">
+        <span class="rx-chip">✓ Base digital propia</span>
+        <span class="rx-chip">✓ Contacto directo sin pasos extra</span>
+        <span class="rx-chip">✓ Visibilidad local mejorada</span>
+        <span class="rx-chip">✓ Presencia profesional creíble</span>
+        <span class="rx-chip">✓ Listo en 3 a 5 días hábiles</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================================
+     5. VALUE ANCHOR + INVESTMENT
+     ✏️ EDITAR PRECIOS DIRECTAMENTE EN ESTE BLOQUE
+     (No son placeholders del JSON — son fijos por plan)
+============================================================== -->
+<section class="section section-sep" id="inversion">
+  <div class="container">
+
+    <div class="section-label">Inversión</div>
+    <h2 class="section-title">Precio preferencial de lanzamiento</h2>
+    <div class="divider"></div>
+    <p class="section-sub">
+      Esta propuesta integra componentes que por separado tienen un costo mayor.
+      Se ofrecen como paquete consolidado con tarifa de lanzamiento.
+    </p>
+
+    <!-- Anchor table -->
+    <div class="anchor-table fade-in">
+      <div class="anchor-row">
+        <div class="anchor-label">
+          <strong>Landing page profesional</strong><br>
+          Diseño, desarrollo, adaptación móvil, SEO básico on-page
+        </div>
+        <!-- ✏️ EDITAR valor referencial landing -->
+        <span class="anchor-value">$1.000.000</span>
+      </div>
+      <div class="anchor-row">
+        <div class="anchor-label">
+          <strong>Configuración Google Business Profile</strong><br>
+          Perfil básico, categorías, información y primera activación
+        </div>
+        <!-- ✏️ EDITAR valor referencial GBP -->
+        <span class="anchor-value">$200.000</span>
+      </div>
+      <div class="anchor-row anchor-row--total">
+        <div class="anchor-label" style="color:var(--white); font-weight:600;">
+          Valor de referencia total
+        </div>
+        <!-- ✏️ EDITAR valor referencial total -->
+        <span class="anchor-value anchor-value--total">$1.200.000</span>
+      </div>
+    </div>
+
+    <!-- Main price card -->
+    <div class="price-card fade-in">
+
+      <!-- ✏️ EDITAR la fecha que aparece en el badge de urgencia -->
+      <div class="price-badge" id="priceBadgeDate">⚡ Tarifa de lanzamiento</div>
+
+      <!-- ✏️ EDITAR valor estándar -->
+      <p class="price-standard">Valor estándar $1.200.000</p>
+
+      <p class="price-main">
+        <span class="price-currency">$</span><!-- ✏️ EDITAR precio pronto pago -->600.000
+      </p>
+      <p class="price-label">Pago único · Tarifa preferencial por pronto pago</p>
+
+      <div class="price-split">
+        <div class="split-opt">
+          <div class="split-opt-label">Modalidad en dos partes · Anticipo</div>
+          <!-- ✏️ EDITAR anticipo -->
+          <div class="split-opt-value">$500.000</div>
+        </div>
+        <div class="split-opt">
+          <div class="split-opt-label">Saldo al entregar</div>
+          <!-- ✏️ EDITAR saldo -->
+          <div class="split-opt-value">$500.000</div>
+        </div>
+      </div>
+
+      <p class="price-note">
+        ✦ Incluye como cortesía: <strong>código QR</strong> y <strong>una ronda de ajustes</strong>.<br>
+        Configuración GBP sujeta a accesos, datos e insumos del cliente.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     6. DELIVERABLES
+============================================================== -->
+<section class="section section-sep" id="entregables">
+  <div class="container">
+
+    <div class="section-label">Entregables</div>
+    <h2 class="section-title">Lo que recibe su negocio</h2>
+    <div class="divider"></div>
+
+    <div class="deliverables-grid">
+
+      <div class="del-item fade-in">
+        <div class="del-icon">🖥️</div>
+        <div>
+          <div class="del-title">Landing page profesional</div>
+          <div class="del-desc">Página de una sola vista, diseñada para presentar y convertir. Estructura clara, contenido orientado al cliente.</div>
+        </div>
+      </div>
+
+      <div class="del-item fade-in">
+        <div class="del-icon">📱</div>
+        <div>
+          <div class="del-title">Diseño adaptable a todo dispositivo</div>
+          <div class="del-desc">Se ve impecable en celular, tableta y computador. Sin importar cómo llegue el cliente.</div>
+        </div>
+      </div>
+
+      <div class="del-item fade-in">
+        <div class="del-icon">💬</div>
+        <div>
+          <div class="del-title">Contacto directo integrado</div>
+          <div class="del-desc">WhatsApp, teléfono, correo y redes accesibles en un clic. Sin pasos intermedios.</div>
+        </div>
+      </div>
+
+      <div class="del-item fade-in">
+        <div class="del-icon">📍</div>
+        <div>
+          <div class="del-title">Mapa y ubicación</div>
+          <div class="del-desc">Ubicación exacta integrada. El cliente sabe dónde está el negocio sin tener que preguntar.</div>
+        </div>
+      </div>
+
+      <div class="del-item fade-in">
+        <div class="del-icon">🗺️</div>
+        <div>
+          <div class="del-title">Google Business Profile básico</div>
+          <div class="del-desc">Configuración inicial del perfil de Google: categoría, información, primera activación. Sujeto a accesos e insumos.</div>
+        </div>
+      </div>
+
+      <div class="del-item fade-in">
+        <div class="del-icon">✦</div>
+        <div>
+          <div class="del-title">QR + ronda de ajustes</div>
+          <div class="del-desc">Código QR listo para compartir en materiales físicos o redes. Más una ronda de ajustes incluida sin costo adicional.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     7. VISUAL EXAMPLE
+============================================================== -->
+<section class="section section-sep" id="ejemplo">
+  <div class="container">
+
+    <div class="section-label">Referencia visual</div>
+    <h2 class="section-title">Así se ve en la práctica</h2>
+    <div class="divider"></div>
+    <p class="section-sub">
+      Ejemplo del nivel de calidad y estilo de entrega. El diseño final se adapta a la identidad,
+      colores y contenido de su negocio.
+    </p>
+
+    <div class="browser-frame fade-in">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <span class="browser-dot dot-r"></span>
+          <span class="browser-dot dot-y"></span>
+          <span class="browser-dot dot-g"></span>
+        </div>
+        <div class="browser-url">https://stepupprofessionals.github.io/underground/</div>
+      </div>
+
+      <div class="browser-preview" id="examplePreview">
+        <div id="previewPlaceholder">
+          <div class="preview-ph-icon">🖥️</div>
+          <p class="preview-ph-text">Vista previa del ejemplo en vivo</p>
+        </div>
+      </div>
+
+      <div class="browser-footer">
+        <span class="browser-footer-label">
+          <strong>Ejemplo de referencia</strong> · El diseño final es personalizado para su negocio
+        </span>
+        <a href="https://stepupprofessionals.github.io/underground/" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:13px; padding:10px 18px;">
+          Ver página completa →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================================
+     8. ACTIVATION PROCESS
+============================================================== -->
+<section class="section section-sep" id="proceso">
+  <div class="container">
+
+    <div class="section-label">El proceso</div>
+    <h2 class="section-title">Tres pasos para poner en marcha</h2>
+    <div class="divider"></div>
+
+    <div class="steps-row">
+
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <div class="step-title">Aprobación</div>
+        <div class="step-desc">Confirma la propuesta por WhatsApp o correo. Le enviamos una confirmación inmediata.</div>
+      </div>
+
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <div class="step-title">Insumos</div>
+        <div class="step-desc">Nos comparte textos, fotos y datos del negocio. Le indicamos exactamente qué necesitamos.</div>
+      </div>
+
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <div class="step-title">Entrega</div>
+        <div class="step-desc">Página publicada y lista para recibir clientes en 3 a 5 días hábiles desde la recepción de insumos.</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================================
+     9. PDF BACKUP
+============================================================== -->
+<section class="section-tight section-sep" id="pdf-backup">
+  <div class="container">
+    <div class="pdf-strip fade-in">
+      <div class="pdf-icon">📄</div>
+      <div class="pdf-text">
+        <p>
+          <strong>La cotización formal completa está disponible en PDF.</strong>
+          Incluye condiciones comerciales, alcance detallado, vigencia y formas de aceptación.
+          La propuesta puede aceptarse por WhatsApp o correo electrónico.
+        </p>
+      </div>
+      <a href="https://stepuplanguages.com/wp-content/uploads/2026/04/Cotizacion_Sal_n_de_Belleza_Ipanema_CO-013.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:13px; padding:10px 18px; flex-shrink:0;">
+        ↓ Descargar PDF
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     10. FINAL CLOSE — DOUBLE ALTERNATIVE
+============================================================== -->
+<section class="section section-sep" id="cierre">
+  <div class="container">
+    <div class="close-card fade-in">
+
+      <p class="close-pre">Siguiente paso</p>
+
+      <h2 class="close-title">El diagnóstico está hecho.<br>La decisión es suya.</h2>
+
+      <p class="close-question">
+        Para avanzar con su propuesta: <strong>¿prefiere activar la tarifa de lanzamiento con un pago único,
+        o trabajar con la modalidad en dos partes?</strong>
+      </p>
+
+      <!-- Primary: double alternative -->
+      <div class="close-primary">
+        <a
+          href="https://wa.me/573005171856?text=Hola%2C%20me%20interesa%20la%20propuesta.%20Quiero%20avanzar.%20(pago%20unico)"
+          target="_blank" rel="noopener"
+          class="btn btn-amber"
+          style="font-size:15px; padding:16px 30px;"
+        >
+          ✦ Activar tarifa — pago único
+        </a>
+        <a
+          href="https://wa.me/573005171856?text=Hola%2C%20me%20interesa%20la%20propuesta.%20Quiero%20avanzar.%20(dos%20pagos)"
+          target="_blank" rel="noopener"
+          class="btn btn-ghost-amber"
+          style="font-size:15px; padding:16px 30px;"
+        >
+          📆 Avanzar en dos partes
+        </a>
+      </div>
+
+      <p class="close-or">o si prefiere conversar primero</p>
+
+      <!-- Secondary: contact options -->
+      <div class="close-secondary">
+        <a
+          href="https://wa.me/573005171856?text=Hola%2C%20me%20interesa%20la%20propuesta.%20Quiero%20avanzar."
+          target="_blank" rel="noopener"
+          class="btn btn-wa"
+        >
+          🟢 WhatsApp directo
+        </a>
+        <a href="mailto:info@stepuplanguages.com" class="btn btn-secondary">
+          ✉ Escribir por correo
+        </a>
+        <a href="https://tech-solutions.stepuplanguages.com/" target="_blank" rel="noopener" class="btn btn-secondary">
+          → Ver más servicios
+        </a>
+      </div>
+
+      <p class="close-footnote">
+        Propuesta Ref. CO-013 · Manizales, Colombia ·
+        <a href="https://tech-solutions.stepuplanguages.com/">Step Up Business Solutions</a> ·
+        <a href="mailto:info@stepuplanguages.com">info@stepuplanguages.com</a>
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================
+     FOOTER
+============================================================== -->
+<footer>
+  <div class="footer-brand">STEP UP BUSINESS SOLUTIONS</div>
+  <div class="footer-links">
+    <a href="https://wa.me/573005171856" target="_blank">WhatsApp</a>
+    <a href="https://tech-solutions.stepuplanguages.com/" target="_blank">Sitio web</a>
+    <a href="mailto:info@stepuplanguages.com">Correo</a>
+  </div>
+  <div class="footer-note">Propuesta CO-013 · Manizales, Colombia</div>
+</footer>
+
+<!-- =============================================================
+     JAVASCRIPT
+============================================================== -->
+<script>
+(function () {
+
+  /* -----------------------------------------------------------
+     COUNTDOWN — reads FECHA_EXPIRACION_ISO placeholder
+     Matches your existing template pattern with individual IDs
+  ----------------------------------------------------------- */
+  const EXPIRATION = "2026-04-27T23:59:59";
+  const expDate    = new Date(EXPIRATION).getTime();
+  const bar        = document.getElementById('countdown-bar');
+  const timerEl    = document.getElementById('countdownTimer');
+  const dateLabel  = document.getElementById('cdDateLabel');
+  const priceBadge = document.getElementById('priceBadgeDate');
+
+  // Show human-readable date in sub-label and price badge
+  if (!isNaN(expDate)) {
+    const d = new Date(EXPIRATION);
+    const formatted = d.toLocaleDateString('es-CO', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+    if (dateLabel)  dateLabel.textContent = 'Fecha límite: ' + formatted;
+    if (priceBadge) priceBadge.textContent = '⚡ Tarifa de lanzamiento · Válida hasta el ' + formatted;
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = expDate - Date.now();
+
+    if (isNaN(expDate) || diff <= 0) {
+      bar.classList.add('expired');
+      timerEl.innerHTML = '<div class="cd-expired-msg">La vigencia de esta propuesta ha finalizado</div>';
+      return;
+    }
+
+    document.getElementById('cdDays').textContent  = pad(Math.floor(diff / 86400000));
+    document.getElementById('cdHours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    document.getElementById('cdMins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+    document.getElementById('cdSecs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+
+    requestAnimationFrame(() => setTimeout(tick, 1000));
+  }
+  tick();
+
+  /* -----------------------------------------------------------
+     EXAMPLE PREVIEW — injects image if EJEMPLO_IMAGEN is real
+  ----------------------------------------------------------- */
+  const imgSrc  = "https://stepuplanguages.com/wp-content/uploads/2026/04/underground.jpg";
+  const preview = document.getElementById('examplePreview');
+
+  if (preview && imgSrc && imgSrc.indexOf('{{') === -1) {
+    preview.innerHTML = '<img src="' + imgSrc + '" alt="Ejemplo de página" loading="lazy">';
+  }
+
+  /* -----------------------------------------------------------
+     SCROLL ANIMATIONS
+  ----------------------------------------------------------- */
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(function (el) {
+    observer.observe(el);
+  });
+
+})();
+</script>
+
+</body>
+</html>
